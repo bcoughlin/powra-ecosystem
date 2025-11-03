@@ -1,0 +1,18 @@
+[submodule "powra-ecosystem-docker"]
+	path = powra-ecosystem-docker
+	url = https://github.com/bcoughlin/powra-ecosystem-docker.git
+[submodule "powra-frontend"]
+	path = powra-frontend
+	url = https://github.com/bcoughlin/agentic-frontend-multiuser.git
+[submodule "powra-backend"]
+	path = powra-backend
+	url = https://github.com/bcoughlin/agentic-backend.git
+[submodule "powra-agent"]
+	path = powra-agent
+	url = https://github.com/bcoughlin/agent-langchain.git
+[submodule "powra-auth"]
+	path = powra-auth
+	url = https://github.com/bcoughlin/powra-auth.git
+[submodule "powra.ai"]
+	path = powra.ai
+	url = https://github.com/bcoughlin/powra.ai.git
