@@ -16,3 +16,6 @@
 [submodule "powra.ai"]
 	path = powra.ai
 	url = https://github.com/bcoughlin/powra.ai.git
+[submodule "lastz-rag"]
+	path = lastz-rag
+	url = https://github.com/bcoughlin/lastz-rag.git
