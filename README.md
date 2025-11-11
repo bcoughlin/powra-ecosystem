@@ -26,6 +26,9 @@ cd powra-ecosystem
 # Or if already cloned, initialize submodules
 git submodule update --init --recursive
 
+# Create local VS Code workspace (optional)
+cp powra-ecosystem.code-workspace.template powra-ecosystem.code-workspace
+
 # Start the development environment
 cd powra-ecosystem-docker
 ./start.sh
@@ -97,6 +100,29 @@ git submodule foreach 'git status'
 ```
 
 ## 🛠️ Development Workflow
+
+### VS Code Workspace Setup
+
+The repository includes a VS Code workspace template for multi-root development:
+
+```bash
+# Create your local workspace file
+cp powra-ecosystem.code-workspace.template powra-ecosystem.code-workspace
+
+# Open in VS Code
+code powra-ecosystem.code-workspace
+```
+
+The workspace includes:
+- **7 folders** organized by service (root, docker, frontend, auth, agent, legacy backend, marketing)
+- **Pre-configured settings** for Python/JS/TS formatting and linting
+- **Launch configurations** for debugging FastAPI services and React frontend
+- **Tasks** for common operations (start/stop services, install dependencies)
+- **Extension recommendations** (Python, Docker, Prettier, ESLint, Copilot)
+
+Your local `.code-workspace` file is git-ignored, so you can customize it without affecting the repository.
+
+### Working with Services
 
 1. **Start all services**: `cd powra-ecosystem-docker && ./start.sh`
 2. **Work on a service**: `cd powra-auth` (or any other service)

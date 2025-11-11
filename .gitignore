@@ -1,0 +1,6 @@
+# Local workspace files (create from template)
+*.code-workspace
+!*.code-workspace.template
+
+# OS files
+.DS_Store

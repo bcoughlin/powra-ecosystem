@@ -1,0 +1,194 @@
+{
+  "folders": [
+    {
+      "name": "🏠 Ecosystem Root",
+      "path": "."
+    },
+    {
+      "name": "🐳 Docker Orchestration",
+      "path": "powra-ecosystem-docker"
+    },
+    {
+      "name": "⚛️ Frontend",
+      "path": "powra-frontend"
+    },
+    {
+      "name": "🔐 Auth Service",
+      "path": "powra-auth"
+    },
+    {
+      "name": "🤖 AI Agent",
+      "path": "powra-agent"
+    },
+    {
+      "name": "📦 Backend (Legacy)",
+      "path": "powra-backend"
+    },
+    {
+      "name": "🌐 Marketing Site",
+      "path": "powra.ai"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/*.pyc": true,
+      "**/.venv": true,
+      "**/venv": true,
+      "**/.DS_Store": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/*.code-search": true,
+      "**/venv": true,
+      "**/.venv": true
+    },
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "[python]": {
+      "editor.tabSize": 4
+    },
+    "[javascript]": {
+      "editor.tabSize": 2
+    },
+    "[typescript]": {
+      "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+      "editor.tabSize": 2
+    },
+    "[json]": {
+      "editor.tabSize": 2
+    },
+    "[yaml]": {
+      "editor.tabSize": 2
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-python.black-formatter",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ms-azuretools.vscode-docker",
+      "rangav.vscode-thunder-client",
+      "tamasfe.even-better-toml",
+      "redhat.vscode-yaml",
+      "GitHub.copilot"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: FastAPI (Auth)",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": [
+          "app.main:app",
+          "--reload",
+          "--port",
+          "8001"
+        ],
+        "cwd": "${workspaceFolder:🔐 Auth Service}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder:🔐 Auth Service}"
+        }
+      },
+      {
+        "name": "Python: FastAPI (Agent)",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": [
+          "app.main:app",
+          "--reload",
+          "--port",
+          "8003"
+        ],
+        "cwd": "${workspaceFolder:🤖 AI Agent}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder:🤖 AI Agent}"
+        }
+      },
+      {
+        "name": "Chrome: Frontend",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder:⚛️ Frontend}"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start All Services (Docker)",
+        "type": "shell",
+        "command": "cd powra-ecosystem-docker && ./start.sh",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Stop All Services (Docker)",
+        "type": "shell",
+        "command": "cd powra-ecosystem-docker && ./stop.sh",
+        "problemMatcher": []
+      },
+      {
+        "label": "Check Status",
+        "type": "shell",
+        "command": "./status.sh",
+        "problemMatcher": []
+      },
+      {
+        "label": "Update All Submodules",
+        "type": "shell",
+        "command": "./update-all.sh",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install Frontend Dependencies",
+        "type": "shell",
+        "command": "npm install",
+        "options": {
+          "cwd": "${workspaceFolder:⚛️ Frontend}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Install Auth Dependencies",
+        "type": "shell",
+        "command": "pip install -r requirements.txt",
+        "options": {
+          "cwd": "${workspaceFolder:🔐 Auth Service}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Install Agent Dependencies",
+        "type": "shell",
+        "command": "pip install -r requirements.txt",
+        "options": {
+          "cwd": "${workspaceFolder:🤖 AI Agent}"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
